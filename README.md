@@ -92,13 +92,61 @@ pip install -r requirements.txt
 # 4. Configurar entorno
 cp .env.example .env
 # Editar .env con tus credenciales
-
+```
 
 ### Ejecucion
 
 ```bash
 # 1. Correr en modo desarrollo
 python run.py
+```
+
+
+##  Tecnologías Clave
+
+- **Flask**: Framework web ligero y rápido  
+- **Supabase**: Backend como servicio (PostgreSQL + Auth)  
+- **SQLAlchemy**: ORM para interacción con bases de datos  
+- **Redis**: Almacenamiento en caché y Pub/Sub para alertas  
+- **SQLite**: Almacenamiento local para modo offline  
+- **Python threading**: Manejo de simulaciones concurrentes  
+
+---
+
+##  Notas de Desarrollo
+
+- Todos los modelos heredan de `Base` desde `api/models/base.py`.
+- Los datos horarios están normalizados a UTC.
+- Las respuestas de la API siguen el siguiente formato:
+
+```json
+{
+  "data": {},
+  "meta": {},
+  "error": null
+}
+```
+
+##  Variables de Entorno Requeridas
+
+Asegúrate de definir las siguientes variables en tu archivo `.env`:
+
+```env
+SUPABASE_URL=your_project_url
+SUPABASE_KEY=your_secret_key
+SUPABASE_SERVICE_ROLE_KEY=your_service_role_key
+SQLITE_URL=sqlite://
+REDIS_URL=redis://localhost:6379
+```
+
+##  Próximos Pasos
+
+-  **Mejorar el sistema de alertas en tiempo real con Redis Pub/Sub**
+- **Complemetar el export_service.py para que se coherente con la estructura actual y poder manejar archivos excel**
+- **Opimizar el manejo de sesiones y la administracion de roles**
+- **Incorporar el bot de telegram para consultar estado de las torres y recibir notificaciones en tiempo real**
+- 
+
 
 
 
